@@ -1,4 +1,13 @@
 # CutAddPaste: Time Series Anomaly Detection by Exploiting Abnormal Knowledge
+
+## CS313 — hướng dẫn nhóm
+
+Đây là fork phục vụ tái lập thí nghiệm; phần mô tả và ghi nhận tác giả gốc được giữ bên dưới.
+Đọc [quy tắc đóng góp](CONTRIBUTING.md), [phân công và tiến độ](TEAM_PLAN.md),
+và [sổ thí nghiệm](EXPERIMENTS.md) trước khi bắt đầu.
+Mốc code ban đầu: tag `upstream-baseline`, commit `e5b5f201dc3326cca0012f7303a4c4c7055a6054`.
+Tag này đánh dấu trạng thái fork trước thay đổi của nhóm, không phải bản phát hành do tác giả đặt.
+
 This repository provides the implementation of the _CutAddPaste: Time Series Anomaly Detection by Exploiting Abnormal Knowledge_ method, called _CutAddPaste_ below. 
 
 ## Abstract

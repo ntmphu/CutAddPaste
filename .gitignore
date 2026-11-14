@@ -12,3 +12,34 @@ sandbox
 # build files
 .ipynb_checkpoints
 venv/
+
+# Local environments and secrets
+.venv/
+.env
+.env.*
+!.env.example
+kaggle.json
+*.pem
+*.key
+
+# Raw/processed datasets (existing tracked upstream files stay tracked)
+/data/**
+
+# Training artifacts: share via Kaggle/Drive, record links in EXPERIMENTS.md
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.zip
+*.tar
+*.gz
+/checkpoints/
+/artifacts/
+/result/
+/results/
+*.log
+wandb/
+.pytest_cache/
