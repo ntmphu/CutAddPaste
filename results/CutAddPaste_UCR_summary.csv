@@ -1,0 +1,41 @@
+,CutAddPaste0
+Hyper-parameter,"dataset:UCR
+input_channels:1
+kernel_size:8
+stride:1
+final_out_channels:64
+project:2
+dropout:0.45
+features_len:10
+window_size:64
+time_step:16
+num_epoch:300
+beta1:0.9
+beta2:0.99
+lr:0.0003
+weight:0.0005
+drop_last:False
+batch_size:512
+trend_rate:0.01
+rate:1
+cut_rate:12
+detect_nu:0.001
+threshold_determine:one-anomaly"
+seed,4
+Train Time,0:33:05.458335
+UCR Accuracy,0.0
+Affiliation Precision,0.71768
+Affiliation Recall,0.71415
+Affiliation F1,0.71591
+RPA Precision,0.5
+RPA Recall,0.52
+RPA F1,0.5098
+PA Precision,0.96103
+PA Recall,0.49713
+PA F1,0.65529
+Point-wise Precision,0.58466
+Point-wise Recall,0.02838
+Point-wise F1,0.05413
+NAB Score (balanced),0.47098
+NAB Score (high precision),0.44946
+NAB Score (high recall),0.48732
