@@ -48,15 +48,35 @@ class Load_Dataset(Dataset):
         return self.len
 
 
+
 # Gives label values (test_y_window) by time window.
 def data_generator(train_data, test_data, train_labels, test_labels, seed, configs):
+    print("===== BEFORE WINDOWING =====")
+    print("train_data:", np.shape(train_data))
+    print("train_labels:", np.shape(train_labels))
+    print("test_data:", np.shape(test_data))
+    print("test_labels:", np.shape(test_labels))
 
+    assert len(train_data) == len(train_labels), \
+        "Train data and labels have different lengths!"
+
+    assert len(test_data) == len(test_labels), \
+    "Test data and labels have different lengths!"
     test_anomaly_window_num = int(len(np.where(test_labels[1:] != test_labels[:-1])[0]) / 2)
 
     train_x = subsequences(train_data, configs.window_size, configs.time_step)
     test_x = subsequences(test_data, configs.window_size, configs.time_step)
     train_y = subsequences(train_labels, configs.window_size, configs.time_step)
     test_y = subsequences(test_labels, configs.window_size, configs.time_step)
+    # ===== AFTER WINDOWING =====
+    print("===== AFTER WINDOWING =====")
+    print("train_x:", train_x.shape)
+    print("train_y:", train_y.shape)
+    print("test_x:", test_x.shape)
+    print("test_y:", test_y.shape)
+
+    assert len(train_x) == len(train_y), "Train windows and labels do not match!"
+    assert len(test_x) == len(test_y), "Test windows and labels do not match!"
 
     train_y_window = np.zeros(train_x.shape[0])
     test_y_window = np.zeros(test_x.shape[0])
@@ -74,10 +94,15 @@ def data_generator(train_data, test_data, train_labels, test_labels, seed, confi
             test_y_window[i] = 0
     train_y = train_y_window
     test_y = test_y_window
-    if configs.dataset == 'UCR' or configs.dataset == 'IOpsCompetition':
-        _, val_x, _, val_y = train_test_split(train_x, train_y, test_size=0.2, shuffle=True,
-                                                        random_state=seed,
-                                                        stratify=test_y_window)
+    if configs.dataset in ('UCR', 'IOpsCompetition'):
+        _, val_x, _, val_y = train_test_split(
+            train_x,
+            train_y,
+            test_size=0.2,
+            shuffle=True,
+            random_state=seed,
+            stratify=train_y if len(np.unique(train_y)) > 1 else None
+        )
     else:
         test_x, val_x, test_y, val_y = train_test_split(test_x, test_y_window, test_size=0.2, shuffle=True, random_state=seed,
                                           stratify=test_y_window)

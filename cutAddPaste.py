@@ -31,7 +31,7 @@ parser.add_argument('--visualization', default=False, type=bool,
                     help='Visualize')
 parser.add_argument('--seed', default=4, type=int,
                     help='seed value')
-parser.add_argument('--selected_dataset', default='IOpsCompetition', type=str,
+parser.add_argument('--selected_dataset', default='UCR', type=str,
                     help='Dataset of choice: IOpsCompetition, UCR, NAB, SWaT, WADI')
 parser.add_argument('--device', default='cuda', type=str,
                     help='cpu or cuda')
