@@ -141,6 +141,8 @@ def cut_paste_outliers_same_trend(train_x, configs):
 
 # Add outliers to original data via our CutAddPaste method
 def cut_add_paste_outlier(train_x, configs):
+    # V05 (WADI only): trend index 1..radius instead of 0..radius-1. No extra RNG calls.
+    one_based_trend = getattr(configs, 'dataset', None) == 'WADI'
     for i, x_i in enumerate(train_x):
         # radius = max(int(train_x.shape[1]/6), int(np.random.rand() * train_x.shape[1]))
         radius = max(int(configs.cut_rate), int(np.random.rand() * train_x.shape[1]))
@@ -149,6 +151,7 @@ def cut_add_paste_outlier(train_x, configs):
         cut_data = train_x[cut_random, :, :]
         from_position = int(np.random.rand() * (train_x.shape[1] - radius))
         cut_data = cut_data[from_position:from_position + radius, :]
+        trend_index = np.arange(1, radius + 1) if one_based_trend else np.arange(radius)
         if cut_data.shape[1] > 1:
             elements = np.arange(0, cut_data.shape[1])
             if configs.dim > 1:
@@ -158,11 +161,11 @@ def cut_add_paste_outlier(train_x, configs):
             selected_elements = np.random.choice(elements, size=dim_size, replace=False)
             for item in selected_elements:
                 factor = np.random.rand() * configs.trend_rate
-                slope = np.random.choice([-1, 1]) * factor * np.arange(radius)
+                slope = np.random.choice([-1, 1]) * factor * trend_index
                 cut_data[:, item] += slope
         else:
             factor = np.random.rand() * configs.trend_rate
-            slope = np.random.choice([-1, 1]) * factor * np.arange(radius)
+            slope = np.random.choice([-1, 1]) * factor * trend_index
             cut_data[:, 0] += slope
         to_position = int(np.random.rand() * (train_x.shape[1] - radius))
         train_x[i, to_position:to_position + radius, :] = cut_data[:, :]

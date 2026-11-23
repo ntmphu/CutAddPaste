@@ -1,0 +1,220 @@
+{
+  "variant": "V05",
+  "dataset": "WADI.A2_19Nov2019",
+  "protocol": "GitHub source with WADI-only 1..radius trend indexing",
+  "base_commit": "2f6b7561511e3d674fd417cf74a00616a6b81f8f",
+  "patch_file": "dataloader/generate_negative.py",
+  "patched_file_sha256": "9c6806cdd6099d4d95845c67fd28382a28af39b336609b4f907bd75008bbc6c0",
+  "patch_sha256": "b130f6e41bf88fd9ab8dbf7fc32d4e8f3719a05efd7b1ace09388655f813a7a2",
+  "source_archive": "results.zip",
+  "source_archive_sha256": "34f80814ec8c44bb37cdb6d9e24c3fc4be773f86506e50401ed0548bf262fb43",
+  "data_sha256": {
+    "WADI_14days_new.csv": "80098fee5baf0a3994bf7add7c7631c254e4ef361a8e7d73387a3461dc356c0d",
+    "WADI_attackdataLABLE.csv": "7c5877b21b8a5b4904e9feb00b1ef184932a6b8b12b3c46ee7d08ec2d3094aa2"
+  },
+  "runtime": {
+    "python": "3.8.20 (default, Oct  2 2024, 16:34:12) \n[Clang 18.1.8 ]",
+    "torch": "1.7.1+cu110",
+    "gpu": "Tesla T4",
+    "salesforce-merlion": "1.1.1"
+  },
+  "seeds": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "epochs_per_seed": 50,
+  "units": "F1 percent",
+  "evaluation": {
+    "common": {
+      "windows": 10799,
+      "order": "chronological",
+      "threshold": "oracle per metric"
+    },
+    "native": {
+      "windows": 8639,
+      "validation_windows": 2160,
+      "order": "source stratified random split order",
+      "threshold": "oracle per metric"
+    }
+  },
+  "aggregate": {
+    "common": {
+      "rpa_f1": {
+        "mean": 24.44865591177342,
+        "std_ddof0": 4.849447082435773,
+        "std_ddof1": 5.11176605765179
+      },
+      "pa_f1": {
+        "mean": 58.268983672247124,
+        "std_ddof0": 11.8370523788724,
+        "std_ddof1": 12.477348766650387
+      }
+    },
+    "native": {
+      "rpa_f1": {
+        "mean": 19.4979,
+        "std_ddof0": 9.609116883980546,
+        "std_ddof1": 10.128898552052823
+      },
+      "pa_f1": {
+        "mean": 20.3242,
+        "std_ddof0": 9.918361667130313,
+        "std_ddof1": 10.454871175145529
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 2,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 26.08695652173913,
+        "pa_f1": 66.73189823874756
+      },
+      "native": {
+        "rpa_f1": 12.117,
+        "pa_f1": 12.733
+      }
+    },
+    {
+      "seed": 3,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 35.714285714285715,
+        "pa_f1": 73.21258341277408
+      },
+      "native": {
+        "rpa_f1": 31.133,
+        "pa_f1": 32.342
+      }
+    },
+    {
+      "seed": 4,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 20.0,
+        "pa_f1": 59.89637305699481
+      },
+      "native": {
+        "rpa_f1": 28.664,
+        "pa_f1": 28.704
+      }
+    },
+    {
+      "seed": 5,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 27.27272727272727,
+        "pa_f1": 64.21845574387947
+      },
+      "native": {
+        "rpa_f1": 17.660999999999998,
+        "pa_f1": 17.96
+      }
+    },
+    {
+      "seed": 6,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 23.52941176470588,
+        "pa_f1": 39.036755386565275
+      },
+      "native": {
+        "rpa_f1": 10.539,
+        "pa_f1": 11.087
+      }
+    },
+    {
+      "seed": 7,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 25.0,
+        "pa_f1": 39.086294416243646
+      },
+      "native": {
+        "rpa_f1": 11.41,
+        "pa_f1": 12.135
+      }
+    },
+    {
+      "seed": 8,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 16.666666666666664,
+        "pa_f1": 70.7182320441989
+      },
+      "native": {
+        "rpa_f1": 40.0,
+        "pa_f1": 42.129
+      }
+    },
+    {
+      "seed": 9,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 23.076923076923077,
+        "pa_f1": 51.89873417721519
+      },
+      "native": {
+        "rpa_f1": 16.089000000000002,
+        "pa_f1": 17.021
+      }
+    },
+    {
+      "seed": 10,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 21.052631578947363,
+        "pa_f1": 50.764525993883794
+      },
+      "native": {
+        "rpa_f1": 13.032,
+        "pa_f1": 13.933000000000002
+      }
+    },
+    {
+      "seed": 11,
+      "epochs": 50,
+      "common": {
+        "rpa_f1": 26.08695652173913,
+        "pa_f1": 67.1259842519685
+      },
+      "native": {
+        "rpa_f1": 14.334,
+        "pa_f1": 15.198
+      }
+    }
+  ],
+  "paper_reference": {
+    "source": "https://yangrenyu.github.io/paper/kdd2024-cap.pdf#page=7",
+    "table": 3,
+    "rpa_f1": {
+      "mean": 26.58,
+      "std": 3.47
+    },
+    "pa_f1": {
+      "mean": 65.2,
+      "std": 10.15
+    }
+  },
+  "common_mean_minus_paper_percentage_points": {
+    "rpa_f1": -2.1313440882265766,
+    "pa_f1": -6.931016327752879
+  },
+  "verification": {
+    "archive_crc": true,
+    "patched_file_matches_local_checkout": true,
+    "all_epoch_logs_verified": true,
+    "common_metrics_recomputed_from_saved_scores": true,
+    "native_csv_matches_archived_checkpoint_recheck": true,
+    "checkpoint_inference_rerun_locally": false
+  }
+}
